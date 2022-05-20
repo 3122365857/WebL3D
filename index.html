@@ -1,0 +1,53 @@
+<html lang="zh-cn"><head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+    </style>
+    <script src="https://heibbs.oss-cn-hongkong.aliyuncs.com/live3d/three/three.js"></script>
+    <script src="lib/mmd-parser-master/build/mmdparser.js"></script>
+    <script src="lib/three/examples/js/shaders/MMDToonShader.js"></script>
+    <script src="lib/three/examples/js/loaders/MMDLoader.js"></script>
+    <script src="./lib/tfjs/core.js"></script>
+    <script src="./lib/tfjs/converter.js"></script>
+    <script src="./lib/tfjs/backend-webgl.js"></script>
+    <script src="./lib/tfjs/pose-detection.js"></script>
+    <script type="text/javascript">
+
+    </script>
+    <style>
+        #video, #pic{
+            position: absolute;
+            align-items: center;
+            opacity: 0.5;
+            left: calc(50% - 320px);
+            z-index: 99;
+            bottom: 0;
+        }
+        #pic{
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <video id="video" width="640" height="480" autoplay="autoplay"></video>
+    <canvas id="pic" width="640" height="480"></canvas>
+    <script type="text/javascript">
+        // Get Camera Promise
+        let constraints = {
+            video: {width:640, height:480},
+            audio: false
+        };
+        let video = document.getElementById("video");
+        let promise = navigator.mediaDevices.getUserMedia(constraints);
+        promise.then((mediaStream) =>{
+            video.srcObject = mediaStream;
+            video.play();
+        });
+
+    </script>
+    <script type="text/javascript" src="./js/new_loading.js"></script>
+
+</body></html>
